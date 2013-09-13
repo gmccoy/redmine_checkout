@@ -1,4 +1,4 @@
-document.observe("dom:loaded", function() {
+$(document).ready(function() {
   /* update the checkout URL if clicked on a protocol */
   $('checkout_protocols').select('a').each(function(e) {
     e.observe('click', function(event) {
@@ -17,20 +17,17 @@ document.observe("dom:loaded", function() {
       event.stop();
     });
   });
-  /* select the text field contents if activated */
-  Event.observe('checkout_url', 'click', function(event) {
-   this.activate();
-  });
 
   if (typeof('ZeroClipboard') != 'undefined') {
-    $('clipboard_container').show();
-    clipboard = new ZeroClipboard.Client();
-    clipboard.setHandCursor( true );
-    clipboard.glue('clipboard_button', 'clipboard_container');
-
-    clipboard.addEventListener('mouseOver', function (client) {
-      clipboard.setText( $('checkout_url').value );
+    var clip = new ZeroClipboard(document.getElementById("clipboard_button"), {
+      moviePath: "/plugin_assets/redmine_checkout/images/ZeroClipboard.swf"
     });
+    
+    clip.on('dataRequested', function(client, args) {
+      client.setText($('#checkout_url').val());
+    });
+    
+    $('#clipboard_container').show();
   }
 });
 

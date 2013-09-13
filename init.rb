@@ -1,11 +1,10 @@
 require 'redmine'
 
-require 'dispatcher'
-Dispatcher.to_prepare do
+Rails.configuration.to_prepare do
   # Patches
   require_dependency 'checkout/settings_controller_patch'
 
-  require_dependency 'checkout/repositories_helper_patch'
+  #require_dependency 'checkout/repositories_helper_patch'
   require_dependency 'checkout/repository_patch'
 
   require_dependency 'checkout/settings_helper_patch'
