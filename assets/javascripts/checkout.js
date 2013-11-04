@@ -25,6 +25,18 @@ $(document).ready(function() {
     
     clip.on('dataRequested', function(client, args) {
       client.setText($('#checkout_url').val());
+
+      var previousText = $("#checkout_access").html();
+      
+      $("#checkout_access").animate({opacity: 0}, 100, function() {
+        $(this).html("Copied!");
+      }).animate({opacity:1}, 100);
+      
+      $("#checkout_access").delay(3000);
+      
+      $("#checkout_access").animate({opacity: 0}, 100, function() {
+        $(this).html(previousText);
+      }).animate({opacity:1}, 100);
     });
     
     $('#clipboard_container').show();
