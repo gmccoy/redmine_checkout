@@ -16,11 +16,11 @@ require 'checkout/repository_hooks'
 
 Redmine::Plugin.register :redmine_checkout do
   name 'Redmine Checkout plugin'
-  url 'http://dev.holgerjust.de/projects/redmine-checkout'
-  author 'Holger Just'
-  author_url 'http://meine-er.de'
+  url 'https://github.com/gmccoy/redmine_checkout'
+  author 'Holger Just, Greg McCoy'
+  author_url 'https://github.com/gmccoy'
   description 'Add links to the actual repository to the repository view.'
-  version '0.5'
+  version '1.1'
 
   # required because of the new i18n requirement and changed syntax
   requires_redmine :version_or_higher => '1.0.5'
